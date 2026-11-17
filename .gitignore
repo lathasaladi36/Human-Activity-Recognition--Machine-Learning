@@ -1,0 +1,12 @@
+# Dataset (downloaded separately; see README)
+data/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# OS files
+.DS_Store
