@@ -1,9 +1,4 @@
-"""Shared data loading and participant-grouped splits for UCI HAR.
-
-Used by every pipeline in this repo. Do not change the split definitions
-without team agreement: the test participants are reserved for the final
-evaluation only.
-"""
+"""Shared data loading and participant-grouped splits for UCI HAR."""
 
 from pathlib import Path
 
