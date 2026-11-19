@@ -31,7 +31,7 @@ src/
   random_forest_pipeline.py random forest
   svm_pca_pipeline.py       PCA + RBF-SVM
   focused_study.py          PCA-components experiment
-  pca_numpy.py              student-written PCA (NumPy; Shreya Shah)
+  pca_numpy.py              student-written PCA (NumPy)
 tests/
   test_pca_numpy.py         PCA parity and validation tests
 results/                    metrics and figures (generated)
