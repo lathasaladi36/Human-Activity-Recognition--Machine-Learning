@@ -8,4 +8,3 @@
 | Shreya Shah | Student-written PCA, error analysis, reproducibility | `src/pca_numpy.py`, `reports/` |
 | All | Shared code reviewed by everyone | `src/data.py`, `src/evaluate.py` |
 
-Each member writes and can explain their own files. Shared files change only through a reviewed pull request.
