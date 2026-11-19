@@ -31,12 +31,15 @@ src/
   random_forest_pipeline.py random forest
   svm_pca_pipeline.py       PCA + RBF-SVM
   focused_study.py          PCA-components experiment
-  pca_numpy.py              student-written PCA (NumPy)
+  pca_numpy.py              student-written PCA (NumPy; Shreya Shah)
+tests/
+  test_pca_numpy.py         PCA parity and validation tests
 results/                    metrics and figures (generated)
 reports/                    proposal and final report
 ```
 
 Run scripts from the repo root, for example `python -m src.knn_pipeline`.
+Run the focused PCA checks with `python -m unittest discover -s tests`.
 
 ## Reproducibility
 
