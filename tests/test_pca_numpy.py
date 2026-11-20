@@ -4,6 +4,8 @@ import numpy as np
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
+from src.data import set_random_seed
+from src.evaluate import analyze_errors
 from src.pca_numpy import NumpyPCA
 
 
@@ -45,6 +47,36 @@ class NumpyPCATests(unittest.TestCase):
             NumpyPCA(n_components=0)
         with self.assertRaises(ValueError):
             NumpyPCA(n_components=2).fit([[1.0, np.nan], [2.0, 3.0]])
+
+
+class ContributionTests(unittest.TestCase):
+    def test_error_analysis_summarizes_confusion_and_subject_errors(self):
+        y_true = np.array([1, 1, 2, 2, 3])
+        y_pred = np.array([1, 2, 2, 3, 3])
+        subjects = np.array([10, 10, 20, 20, 30])
+
+        result = analyze_errors(y_true, y_pred, subjects)
+
+        self.assertEqual(result["n_windows"], 5)
+        self.assertEqual(result["n_errors"], 2)
+        self.assertAlmostEqual(result["error_rate"], 0.4)
+        self.assertEqual(result["misclassified_indices"], [1, 3])
+        self.assertEqual(result["per_participant"][10]["n_errors"], 1)
+        self.assertEqual(
+            result["strongest_misclassifications"][0]["count"],
+            1,
+        )
+
+    def test_error_analysis_rejects_length_mismatches(self):
+        with self.assertRaises(ValueError):
+            analyze_errors([1, 2], [1])
+
+    def test_random_seed_is_repeatable(self):
+        set_random_seed(42)
+        first = np.random.normal(size=5)
+        set_random_seed(42)
+        second = np.random.normal(size=5)
+        np.testing.assert_array_equal(first, second)
 
 
 if __name__ == "__main__":
