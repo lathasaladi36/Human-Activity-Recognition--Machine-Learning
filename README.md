@@ -44,8 +44,11 @@ Run the focused PCA checks with `python -m unittest discover -s tests`.
 ## Reproducibility
 
 - Random seed: `SEED = 42` in `src/data.py`
+- Call `set_random_seed()` before NumPy/scikit-learn experiments.
 - Splits are defined in `src/data.py`. Do not change them without team agreement.
 - Preprocessing and PCA are fit inside each training fold only.
+- Use `score_predictions()` and `analyze_errors()` in `src/evaluate.py` for metrics
+  and reproducible confusion/error summaries.
 
 ## Team
 

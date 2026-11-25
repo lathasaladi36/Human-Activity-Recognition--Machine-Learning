@@ -3,6 +3,7 @@
 from pathlib import Path
 
 import numpy as np
+import random
 from sklearn.model_selection import GroupKFold
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -19,6 +20,13 @@ ACTIVITY_NAMES = {
     5: "STANDING",
     6: "LAYING",
 }
+
+
+def set_random_seed(seed=SEED):
+    """Set Python and NumPy random seeds for reproducible model runs."""
+    random.seed(seed)
+    np.random.seed(seed)
+    return seed
 
 
 def load_split(split):
